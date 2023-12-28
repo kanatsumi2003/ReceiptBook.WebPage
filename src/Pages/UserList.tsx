@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, Button, List } from 'antd';
 import axios from '../Routers/axiosInstance'
 import UserForm from './UserForm';
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 
 interface User {
   id: number;
@@ -14,7 +14,6 @@ interface User {
 
 const UserList: React.FC<{}> = () => {
   const [data, setData] = useState<User[]>([]);
-  const navigate = useNavigate();
 
   const fetchData = async () => {
     axios.get('/api/user')
@@ -26,12 +25,10 @@ const UserList: React.FC<{}> = () => {
       });
 
   };
+  const newUser = {
 
-  const createUser = async (values: any) => {
-    await axios.post('/api/user', values);
-    fetchData();
-    navigate('/userform');
   }
+
 
   const columns = [
     {
@@ -60,16 +57,8 @@ const UserList: React.FC<{}> = () => {
   }, []);
 
   return (
-    <div>
-      <UserForm onCreate={createUser}></UserForm>
-      <Link to="/userform">
-        <Button type="primary">Create User</Button>
-      </Link>
-      <Routes>
-        <Route path="/userform" element={<UserForm onCreate={function (): void {
-          throw new Error('Function not implemented.');
-        }} />} />
-      </Routes>
+    <div>  
+      <Link to="/UserForm">Add +</Link>
       <h2>Data Table</h2>
       <Table dataSource={data} columns={columns} rowKey="id" />
     </div>

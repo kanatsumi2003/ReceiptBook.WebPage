@@ -1,13 +1,23 @@
-import axios from "axios";
-import React from "react";
+import axios from "../Routers/axiosInstance";
+import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
-const UserForm: React.FC<{ onCreate: (value: any) => void }> = ({ onCreate }) => {
-    const onFinish = (values: any) => {
-        onCreate(values);
-    };
+const UserForm: React.FC = () => {
+    const navigate = useNavigate();
+
+    const [values, setValues] = useState({
+        name: '',
+        contactNo: '',
+        role: '',
+    })
+    const handleSubmit = async (values: any) => {
+        axios.post('/api/user', values)
+        .then(response => setValues(response.data))
+        navigate('/userlist');
+    }
     return (
-        <Form onFinish={onFinish}>
+        <Form onFinish={handleSubmit}>
             <Form.Item label="Name" name="name" rules={[{ required: true, message: 'Please enter a name' }]}>
                 <Input />
             </Form.Item>
@@ -19,7 +29,7 @@ const UserForm: React.FC<{ onCreate: (value: any) => void }> = ({ onCreate }) =>
             </Form.Item>
             <Form.Item>
                 <Button type="primary" htmlType="submit">
-                    Create User
+                    Create 
                 </Button>
             </Form.Item>
         </Form>

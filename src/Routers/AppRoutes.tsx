@@ -9,9 +9,7 @@ const AppRoutes: React.FC = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/userlist" element={<UserList />} />
-          <Route path="/userform" element={<UserForm onCreate={function (): void {
-            throw new Error('Function not implemented.');
-          } } />} />
+          <Route path="/userform" element={<UserForm />} />
         </Routes>
       </BrowserRouter>
     )
