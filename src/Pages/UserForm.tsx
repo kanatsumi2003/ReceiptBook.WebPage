@@ -10,6 +10,7 @@ const UserForm: React.FC = () => {
         name: '',
         contactNo: '',
         role: '',
+        ccid: ''
     })
     const handleSubmit = async (values: any) => {
         axios.post('/api/user', values)
@@ -25,6 +26,9 @@ const UserForm: React.FC = () => {
                 <Input />
             </Form.Item>
             <Form.Item label="Role" name="role" rules={[{ required: true, message: 'Please enter a role' }]}>
+                <Input />
+            </Form.Item>
+            <Form.Item label="CCID" name="ccid" rules={[{ required: true, message: 'Please enter a CCID' }]}>
                 <Input />
             </Form.Item>
             <Form.Item>

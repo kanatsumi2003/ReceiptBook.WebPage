@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import UserList from '../Pages/UserList';
 import UserForm from '../Pages/UserForm';
