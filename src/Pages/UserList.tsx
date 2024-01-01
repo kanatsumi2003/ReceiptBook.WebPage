@@ -60,12 +60,12 @@ const UserList: React.FC<{}> = () => {
   }, []);
   return (
     <>
-      <div className='p-3 flex-col'>
-        <Button className='bg-sky-500 rounded-md float-right text-white bold bg-green-700 hover:from-current-to' icon={<PlusOutlined/>}>
-          <Link to="/UserForm"></Link>
+      <div className='p-3 flex-col m-10'>
+        <Button shape='round' href='/UserForm' className='mb-2 float-right text-white bold bg-green-700 hover:bg-green-100 ease-in-out hover: delay-150' icon={<PlusOutlined/>}>
+        Add
         </Button>
         <div className=''>
-          <Table className='' dataSource={data} columns={columns} rowKey="id" />
+          <Table rowClassName="hover-bg-blue-100" dataSource={data} columns={columns} rowKey="id" />
         </div>
       </div>
     </>
