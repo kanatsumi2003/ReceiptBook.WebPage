@@ -1,10 +1,12 @@
 import { HOST_API } from '../config';
 import React, { useEffect, useState } from 'react';
-import { Table, Button, List } from 'antd';
+import { Table, Button, List, Layout } from 'antd';
 import axios from '../Routers/axiosInstance'
 import UserForm from './UserForm';
 import { Link, Route, Routes, useNavigate } from 'react-router-dom';
-import '../App.css'
+import { Content } from 'antd/es/layout/layout';
+import { SideBar } from './SideBar';
+import Sider from 'antd/es/layout/Sider';
 
 
 interface User {
@@ -27,7 +29,7 @@ const UserList: React.FC<{}> = () => {
       });
 
   };
- 
+
   const columns = [
     {
       title: 'ID',
@@ -55,21 +57,22 @@ const UserList: React.FC<{}> = () => {
       key: 'ccid',
     },
   ];
- 
+
   useEffect(() => {
     fetchData();
   }, []);
   return (
-    <div>
-<h2>Data Table</h2>
-      <button className='bg-sky-500	 rounded-md  '>
-      <Link to="/UserForm">Add +</Link>
-      </button>
-      <span className='flex flex-col items-center justify-center '>
-      <Table className='w-4/5	' dataSource={data} columns={columns} rowKey="id" />
-      </span>
-    </div>
-      
+    <>
+    <div className='p-3'>
+          <button className='bg-sky-500 rounded-md'>
+            <Link to="/UserForm">Add +</Link>
+          </button>
+          <div className='flex flex-col items-center justify-center '>
+            <Table className='w-4/5' dataSource={data} columns={columns} rowKey="id" />
+          </div>
+          </div>
+    </>
+
   )
 };
 
