@@ -12,7 +12,7 @@ import UserForm from "./UserForm";
 export const SideBar: React.FC = () => {
     return (
         <>
-            <Layout>
+            <Layout className="h-full">
                 <MenuNavBar />
                 <Layout>
                     <Content>
@@ -26,7 +26,8 @@ export const SideBar: React.FC = () => {
 
 const MenuNavBar: React.FC = () => {
     return (
-        <Sider theme="dark">
+        <div>
+        <Sider theme="dark" className="min-h-screen">
             <Menu theme="dark" className="p-3">
                 <Menu.Item key='1' style={{marginBottom: '10%'}} icon={<HomeOutlined />}>
                     <Link to="/">Home</Link>
@@ -36,5 +37,6 @@ const MenuNavBar: React.FC = () => {
                 </Menu.Item>
             </Menu>
         </Sider>
+        </div>
     );
 };

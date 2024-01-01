@@ -4,12 +4,12 @@ import UserList from './Pages/UserList';
 import AppRoutes from './Routers/AppRoutes';
 import './App.css';
 import { SideBar } from './Pages/SideBar';
+import './App.css'
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <SideBar/>
     </BrowserRouter>
-      
   );
 };
 
