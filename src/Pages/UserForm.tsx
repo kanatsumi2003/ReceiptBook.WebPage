@@ -13,7 +13,7 @@ const UserForm: React.FC = () => {
         ccid: ''
     })
     const handleSubmit = async (values: any) => {
-        axios.post('/api/user', values)
+        axios.post('/api/user/create_new_user', values)
             .then(response => setValues(response.data))
         navigate('/userlist');
     }
